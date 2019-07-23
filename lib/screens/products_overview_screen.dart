@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shopd_flutter/models/product.dart';
+import 'package:shopd_flutter/widgets/product_item.dart';
 
 class ProductsOverviewScreen extends StatelessWidget {
-  final List<Product> loadedProduct = [
+  final List<Product> loadedProducts = [
     Product(
       id: 'p1',
       title: 'Red Shirt',
@@ -41,11 +42,27 @@ class ProductsOverviewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Shopd'),
+        title: Text(
+          'Shopd',
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+          ),
+        ),
       ),
       body: GridView.builder(
-        gridDelegate: null,
-        itemBuilder: (BuildContext context, int index) {},
+        padding: const EdgeInsets.all(8.0),
+        itemCount: loadedProducts.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          childAspectRatio: 3 / 2,
+          crossAxisSpacing: 10.0,
+          mainAxisSpacing: 10.0,
+        ),
+        itemBuilder: (ctx, i) => ProductItem(
+          loadedProducts[i].id,
+          loadedProducts[i].title,
+          loadedProducts[i].imageUrl,
+        ),
       ),
     );
   }
