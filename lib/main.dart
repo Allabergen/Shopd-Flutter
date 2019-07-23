@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopd_flutter/providers/cart.dart';
 import 'package:shopd_flutter/screens/product_detail_screen.dart';
 import 'package:shopd_flutter/screens/products_overview_screen.dart';
 
@@ -12,9 +13,17 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider.value(
-      // builder: (context) => Products(),
-      value: Products(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(
+          // builder: (context) => Products(),
+          value: Products(),
+        ),
+        ChangeNotifierProvider.value(
+          // builder: (context) => Products(),
+          value: Cart(),
+        ),
+      ],
       child: MaterialApp(
         title: 'Shopd',
         debugShowCheckedModeBanner: false,
@@ -34,6 +43,7 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.w300,
+              fontSize: 14.0,
             ),
           ),
         ),
