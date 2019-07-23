@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shopd_flutter/providers/cart.dart';
 import 'package:shopd_flutter/providers/product.dart';
 import 'package:shopd_flutter/providers/products.dart';
+import 'package:shopd_flutter/screens/cart_screen.dart';
 import 'package:shopd_flutter/widgets/badge.dart';
 import 'package:shopd_flutter/widgets/products_grid.dart';
 
@@ -33,7 +34,9 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
             ),
             child: IconButton(
               icon: Icon(Icons.shopping_cart),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
             ),
           ),
           PopupMenuButton(
