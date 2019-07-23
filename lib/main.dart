@@ -12,7 +12,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return ChangeNotifierProvider.value(
+      // builder: (context) => Products(),
+      value: Products(),
       child: MaterialApp(
         title: 'Shopd',
         debugShowCheckedModeBanner: false,
@@ -41,7 +43,7 @@ class MyApp extends StatelessWidget {
           '/': (ctx) => ProductsOverviewScreen(),
           ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
         },
-      ), builder: (context) => Products(),
+      ),
     );
   }
 }
