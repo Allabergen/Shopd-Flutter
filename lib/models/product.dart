@@ -1,9 +1,19 @@
-class Product {
-  String id;
-  String title;
-  String description;
-  double price;
-  String imageUrl;
+import 'package:flutter/widgets.dart';
 
-  Product({this.id, this.title, this.description, this.price, this.imageUrl});
+class Product {
+  final String id;
+  final String title;
+  final String description;
+  final double price;
+  final String imageUrl;
+  bool isFavorite;
+
+  Product({
+    @required this.id,
+    @required this.title,
+    @required this.description,
+    @required this.price,
+    @required this.imageUrl,
+    this.isFavorite,
+  });
 }
