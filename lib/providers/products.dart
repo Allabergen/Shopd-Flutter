@@ -70,6 +70,9 @@ class Products with ChangeNotifier {
       final response = await http.get(url);
       final List<Product> products = [];
       final data = json.decode(response.body) as Map<String, dynamic>;
+      if (data == null) {
+        return;
+      }
       data.forEach((pid, pdata) {
         products.add(Product(
             id: pid,
@@ -114,7 +117,6 @@ class Products with ChangeNotifier {
       _items.add(newProduct);
       notifyListeners();
     } catch (error) {
-      print(error);
       throw (error);
     }
   }
